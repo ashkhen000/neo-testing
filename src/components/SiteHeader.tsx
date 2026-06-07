@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { useLang } from "@/lib/lang";
 import { uiContent } from "@/data/content";
 import { Button } from "@/components/ui/button";
@@ -6,10 +6,19 @@ import { Button } from "@/components/ui/button";
 export function SiteHeader() {
   const { lang, setLang } = useLang();
   const t = uiContent[lang];
+  const location = useLocation();
 
   const linkCls =
     "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors";
   const activeCls = "text-foreground";
+
+  // Helper function to check if link path matches active route
+  const getLinkClass = (path: string, exact = false) => {
+    const isActive = exact 
+      ? location.pathname === path 
+      : location.pathname.startsWith(path);
+    return `${linkCls} ${isActive ? activeCls : ""}`;
+  };
 
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
@@ -22,16 +31,16 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-7">
-          <Link to="/" className={linkCls} activeProps={{ className: activeCls }} activeOptions={{ exact: true }}>
+          <Link to="/" className={getLinkClass("/", true)}>
             {t.nav.home}
           </Link>
-          <Link to="/services" className={linkCls} activeProps={{ className: activeCls }}>
+          <Link to="/services" className={getLinkClass("/services")}>
             {t.nav.services}
           </Link>
-          <Link to="/about" className={linkCls} activeProps={{ className: activeCls }}>
+          <Link to="/about" className={getLinkClass("/about")}>
             {t.nav.about}
           </Link>
-          <Link to="/contact" className={linkCls} activeProps={{ className: activeCls }}>
+          <Link to="/contact" className={getLinkClass("/contact")}>
             {t.nav.contact}
           </Link>
         </nav>
