@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLang } from "@/lib/lang";
 import { uiContent } from "@/data/content";
 // 1. Import your media asset directly as a module reference
-import logoVideo from "@/assets/logo.MOV"; 
+import logoVideo from "@/components/logo.MOV"; 
 
 export function LoadingScreen({ children }: { children: React.ReactNode }) {
   const [done, setDone] = useState(false);
