@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/lang";
 import { uiContent } from "@/data/content";
-// 1. Import your media asset directly as a module reference
-import logoVideo from "@/components/logo.MOV"; 
 
 export function LoadingScreen({ children }: { children: React.ReactNode }) {
   const [done, setDone] = useState(false);
@@ -16,6 +14,9 @@ export function LoadingScreen({ children }: { children: React.ReactNode }) {
 
   if (done) return <>{children}</>;
 
+  // This safely resolves the path to your video file for Vite without TypeScript complaining
+  const videoUrl = new URL("./logo.MOV", import.meta.url).href;
+
   return (
     <div
       className="fixed inset-0 z-50 flex flex-col items-center justify-center"
@@ -23,17 +24,15 @@ export function LoadingScreen({ children }: { children: React.ReactNode }) {
         backgroundColor: "#a9a29a", 
       }}
     >
-      <div className="w-52 h-52 rounded-3xl bg-[#d6d0c8] shadow-2xl flex items-center justify-center overflow-hidden mb-6 animate-fadeIn">
-        
+      <div className="w-52 h-52 rounded-3xl bg-[#d6d0c8] shadow-2xl flex items-center justify-center overflow-hidden mb-6">
         <video
-          src={logoVideo} // 2. Pass the compiled asset path variable here
+          src={videoUrl}
           autoPlay
           muted
           loop
           playsInline
           className="w-full h-full object-contain"
         />
-
       </div>
     </div>
   );
