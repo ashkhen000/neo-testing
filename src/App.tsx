@@ -1,3 +1,4 @@
+import { useEffect } from "react"; // 1. Imported useEffect
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RootLayout, NotFoundComponent } from "@/components/RootLayout";
 import HomePage from "@/pages/HomePage";
@@ -9,6 +10,11 @@ import WindowsPage from "@/pages/WindowsPage";
 import DoorsPage from "@/pages/DoorsPage";
 
 export default function App() {
+  // 2. This hook runs immediately after the component successfully renders in the DOM
+  useEffect(() => {
+    console.log("🚀 NEOCRISTAL App has successfully initialized and rendered!");
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
