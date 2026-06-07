@@ -16,13 +16,13 @@ import doorsImg from "@/assets/doors-card.jpg";
 
 export default function HomePage() {
   return (
-    <PageShell>
+    <>
       <Hero />
       <Gallery />
       <ServicesPreview />
       <AboutPreview />
       <ContactSection />
-    </PageShell>
+    </>>
   );
 }
 
