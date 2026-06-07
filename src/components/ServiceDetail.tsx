@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useLang } from "@/lib/lang";
 import { uiContent } from "@/data/content";
 import { Button } from "@/components/ui/button";
