@@ -11,10 +11,10 @@ import WindowsPage from "@/pages/WindowsPage";
 import DoorsPage from "@/pages/DoorsPage";
 
 export default function App() {
-  useEffect(() => {
-    alert(0);
-    console.log("🚀 NEOCRISTAL App has successfully initialized and rendered!");
-  }, []);
+  // useEffect(() => {
+  //   alert(0);
+  //   console.log("🚀 NEOCRISTAL App has successfully initialized and rendered!");
+  // }, []);
 
   return (
     <BrowserRouter>
