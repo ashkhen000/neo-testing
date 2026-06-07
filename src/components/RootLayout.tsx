@@ -1,12 +1,12 @@
+import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { LangProvider } from "@/lib/lang";
 import { Toaster } from "@/components/ui/sonner";
-import "@/styles.css"; // Regular CSS import rather than a TanStack asset bundle
+import "@/styles.css"; 
 
 export function RootLayout() {
   return (
     <LangProvider>
-      {/* React Router DOM Outlet renders child components mapped to the path */}
       <Outlet />
       <Toaster />
     </LangProvider>
@@ -23,12 +23,13 @@ export function NotFoundComponent() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <a
-            href="/"
+          {/* Swapped <a> for <Link> to keep it a true SPA transition */}
+          <Link
+            to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Go home
-          </a>
+          </Link>
         </div>
       </div>
     </div>
