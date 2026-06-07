@@ -1,4 +1,5 @@
-import { useEffect } from "react"; // 1. Imported useEffect
+import { useEffect } from "react";
+import ReactDOM from "react-dom/client"; // 1. Added React DOM client import
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RootLayout, NotFoundComponent } from "@/components/RootLayout";
 import HomePage from "@/pages/HomePage";
@@ -10,8 +11,8 @@ import WindowsPage from "@/pages/WindowsPage";
 import DoorsPage from "@/pages/DoorsPage";
 
 export default function App() {
-  // 2. This hook runs immediately after the component successfully renders in the DOM
   useEffect(() => {
+    alert(0);
     console.log("🚀 NEOCRISTAL App has successfully initialized and rendered!");
   }, []);
 
@@ -37,4 +38,10 @@ export default function App() {
       </Routes>
     </BrowserRouter>
   );
+}
+
+// 2. THIS IS THE MISSING LINK: Mount the application to the DOM element
+const rootEl = document.getElementById("root");
+if (rootEl && !rootEl.innerHTML) {
+  ReactDOM.createRoot(rootEl).render(<App />);
 }
